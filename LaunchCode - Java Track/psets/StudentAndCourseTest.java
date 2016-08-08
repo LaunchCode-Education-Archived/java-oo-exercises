@@ -233,7 +233,7 @@ public class StudentAndCourseTest extends TestCase {
 			for(int i = 0; i < s; i++) {
 				String aa =  "" + (Math.random() * 5000);
 				String b =  "" + (Math.random() * 5000);
-				int cc = (int)Math.random() * 500000;
+				int cc = (int)(Math.random() * 500000);
 				Student s2 = new Student(aa, b, cc);
 				double g = Math.round(Math.random() * 4000) / 1000.0;
 				gpaSum += g;
