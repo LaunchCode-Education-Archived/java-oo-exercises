@@ -8,11 +8,11 @@ import junit.framework.TestCase;
 public class StudentAndCourseTest extends TestCase {
 
 	String s1 = "either your getName() method isn't doing its job or you're not " +
-			"setting your instance variables properly"; 
-	String s2 = "either your getGPA() method isn't doing its job or you're not " +
+			"setting your instance variables properly";
+	String s2 = "either your getGPA() method is not doing its job or you're not " +
 			"setting your instance variables properly";
 	String s4 = "either your getCredits() method is not doing its job or you're not " +
-			"setting your instance variables properly"; 
+			"setting your instance variables properly";
 	String s5 = "either your getClassStanding() method isn't doing its job or you're not " +
 			"setting your instance variables properly";
 	String s6 = "The plus method shouldn't change the original vector";
@@ -144,12 +144,12 @@ public class StudentAndCourseTest extends TestCase {
 			assertEquals("create baby not setting gpa properly", (g + g2) / 2, bb.getGPA(), 0.01);
 			assertEquals("create baby not setting credits properly", bb.getCredits(), Math.max(c, c2));
 			assertTrue("create baby not creating ID properly", bb.getStudentID() == s.getStudentID() + ss.getStudentID());
-			
+
 			//Make sure parents haven't changed
 			assertEquals("createBaby should not alter the parents", a + " " + b, s.getName());
 			assertEquals("createBaby should not alter the parents", g, s.getGPA());
 			assertEquals("createBaby should not alter the parents", c, s.getCredits());
-		
+
 			assertEquals("createBaby should not alter the parents", a2 + " " + b2, ss.getName());
 			assertEquals("createBaby should not alter the parents", g2, ss.getGPA());
 			assertEquals("createBaby should not alter the parents", c2, ss.getCredits());
@@ -243,7 +243,7 @@ public class StudentAndCourseTest extends TestCase {
 			}
 		}
 	}
-	
+
 	@Test
 	public void testCourseToString() {
 		for (int i = 0; i < 100; i++) {
@@ -258,5 +258,3 @@ public class StudentAndCourseTest extends TestCase {
 
 
 }
-
-
