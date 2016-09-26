@@ -24,6 +24,7 @@ public class StudentAndCourseTest extends TestCase {
 		assertEquals("Doug Shook", s.getName());
 		assertEquals(111111, s.getStudentID());
 		//No credits, should be a freshman, no GPA
+		//test commit commentslkjf
 		assertEquals(0.0, s.getGPA());
 		assertEquals(0, s.getCredits());
 		assertEquals("Freshman", s.getClassStanding());
