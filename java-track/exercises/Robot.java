@@ -1,17 +1,6 @@
 enum Direction 
 {
-  NORTH(0), EAST(1), SOUTH(2), WEST(3);
-
-  private int value;
-  private Direction(int value)
-  {
-    this.value = value;
-  }
-  
-  public int getValue()
-  {
-    return this.value;
-  }
+  NORTH, EAST, SOUTH, WEST;
 }
 
 public class Robot {
@@ -51,12 +40,23 @@ public class Robot {
   
   public void rotate(int direction)
   {
-   if (direction != 90 || direction != -90) return; 
    
    switch (direction) {
+   case -90:
+     this.direction = Direction.values()[(this.direction.ordinal() + 1) % Direction.values().length];
+     break;
    case 90:
-     this.direction = Direction.(this.getDirection()); 
+     // implementation defined behavior?
+     this.direction = Direction.values()[(this.direction.ordinal() + 3) % Direction.values().length];
+     break;
+   default:
+     return;
    }
+  }
+
+  public int getDistance(Robot bot)
+  {
+    return (int)Math.sqrt( (this.posX - bot.posX) * (this.posX - bot.posX) + (this.posY - bot.posY) * (this.posY - bot.posY) );
   }
   
   // getters
@@ -115,7 +115,54 @@ public class Robot {
   public static void main(String[] args) {
     
     Robot ultron = new Robot("ultron", 0, 0, 2, Direction.NORTH);
+    Robot buttbot = new Robot("buttbot", 8, 12, 3, Direction.WEST);
+    System.out.println("ultron: " + ultron);
+    for (int i = 0; i < 4; ++i) {
+      ultron.rotate(90);
+      System.out.println(ultron.getDirection());
+    }
+    
+    System.out.println();
+    
+    for (int i = 0; i < 4; ++i) {
+      ultron.rotate(-90);
+      System.out.println(ultron.getDirection());
+    }
+    
+    System.out.println();
+    System.out.println("buttbot: " + buttbot);
+    for (int i = 0; i < 4; ++i) {
+      buttbot.rotate(90);
+      System.out.println(buttbot.getDirection());
+    }
+    
+    System.out.println();
+    
+    for (int i = 0; i < 4; ++i) {
+      buttbot.rotate(-90);
+      System.out.println(buttbot.getDirection());
+    }
+    
+    // find their distance
+    System.out.println("ultron's distance to buttbot: " + ultron.getDistance(buttbot));
+    System.out.println("buttbot's distance to ultron: " + buttbot.getDistance(ultron));
+
+    // move the robuts 
+    ultron.move();
+    ultron.move();
+    buttbot.move();
+    buttbot.move();
+    
+    // print their current values
     System.out.println(ultron);
+    System.out.println(buttbot);
+    
+    // find their new distance
+    System.out.println("ultron's distance to buttbot: " + ultron.getDistance(buttbot));
+    System.out.println("buttbot's distance to ultron: " + buttbot.getDistance(ultron));
+    
+    // will this work?
+    System.out.println("ultron's distance to itself: " + ultron.getDistance(ultron));
   }
 
 }
