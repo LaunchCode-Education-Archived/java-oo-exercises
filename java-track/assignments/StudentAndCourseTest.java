@@ -138,7 +138,7 @@ public class StudentAndCourseTest extends TestCase {
 			int c2 = (int)(Math.random() * 120 + 1);
 			double g2 = Math.round(Math.random() * 4000) / 1000.0;
 			ss.submitGrade(g2, c2);
-			Student bb = s.createLegacy(ss);
+			Student bb = s.createLegacy(s, ss);
 			assertTrue("create baby not setting name properly", bb.getName().contains(s.getName()) && bb.getName().contains(ss.getName()));
 			assertEquals("create baby not setting gpa properly", (g + g2) / 2, bb.getGPA(), 0.01);
 			assertEquals("create baby not setting credits properly", bb.getCredits(), Math.max(c, c2));
