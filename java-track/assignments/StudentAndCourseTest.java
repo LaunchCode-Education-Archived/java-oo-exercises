@@ -1,4 +1,3 @@
-
 import static org.junit.Assert.*;
 
 import org.junit.Test;
@@ -83,44 +82,17 @@ public class StudentAndCourseTest extends TestCase {
 	@Test
 	public void testComputeTuition() {
 		Student s = new Student("D", "S", 1);
-		for (int i = 0; i < 15; i++) {
+		for (int i = 0; i < 14; i++) {
 			s.submitGrade(0, 1);
-			assertEquals("Compute tution not working properly", 20000.0, s.computeTuition());
+			assertEquals("Compute tution not working properly", (i+1) * 1333.33, s.computeTuition());
 		}
 
-		for (int i = 0; i < 15; i++) {
-			s.submitGrade(0, 1);
-			assertEquals("Compute tution not working properly", 20000.0*2, s.computeTuition());
-		}
+		s.submitGrade(0, 1);
+		assertEquals("Compute tution not working properly", 20000.0, s.computeTuition());
 
-		for (int i = 0; i < 15; i++) {
+		for (int i = 0; i < 14; i++) {
 			s.submitGrade(0, 1);
-			assertEquals("Compute tution not working properly", 20000.0*3, s.computeTuition());
-		}
-
-		for (int i = 0; i < 15; i++) {
-			s.submitGrade(0, 1);
-			assertEquals("Compute tution not working properly", 20000.0*4, s.computeTuition());
-		}
-
-		for (int i = 0; i < 15; i++) {
-			s.submitGrade(0, 1);
-			assertEquals("Compute tution not working properly", 20000.0*5, s.computeTuition());
-		}
-
-		for (int i = 0; i < 15; i++) {
-			s.submitGrade(0, 1);
-			assertEquals("Compute tution not working properly", 20000.0*6, s.computeTuition());
-		}
-
-		for (int i = 0; i < 15; i++) {
-			s.submitGrade(0, 1);
-			assertEquals("Compute tution not working properly", 20000.0*7, s.computeTuition());
-		}
-
-		for (int i = 0; i < 15; i++) {
-			s.submitGrade(0, 1);
-			assertEquals("Compute tution not working properly", 20000.0*8, s.computeTuition());
+			assertEquals("Compute tution not working properly", 1333.33 * (i+1) + 20000.0, s.computeTuition());
 		}
 	}
 
