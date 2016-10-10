@@ -6,7 +6,7 @@ import java.io.File;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class JavagramMenu {
+public class Javagram {
 
 	public static void main(String[] args) {
 
@@ -52,23 +52,28 @@ public class JavagramMenu {
 		
 		// save image, if desired
 		
-		System.out.println("Save image to (relative to " + dir + "):");
+		System.out.println("Save image to (relative to " + dir + ") (type 'exit' to quit w/o saving:");
 		String fileName = in.next();
 		
-		if (!fileName.equals("")) {
+		// TODO - if the user enters the same file name as the input file, confirm that they want to overwrite the original
+		
+		if (fileName.equals("exit")) {
+			System.out.println("Image not saved");
+		} else {
 			String absFileName = dir + File.separator + fileName;
 			processed.save(absFileName);
-			System.out.println("Image saved to " + absFileName);	
-		}		
+			System.out.println("Image saved to " + absFileName);
+		}	
 		
 		// close input scanner
 		in.close();
 	}
 	
 	// TODO - refactor this method to accept an int parameter, and return an instance of the Filter interface
+	// TODO - refactor this method to thrown an exception if the int doesn't correspond to a filter
 	private static BlueFilter getFilter() {
 		
-		// TODO - create some more filters, and add logic to sort through them here
+		// TODO - create some more filters, and add logic to return the appropriate one
 		return new BlueFilter();
 		
 	}
