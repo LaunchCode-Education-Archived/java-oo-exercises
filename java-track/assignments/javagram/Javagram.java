@@ -52,7 +52,7 @@ public class Javagram {
 		
 		// save image, if desired
 		
-		System.out.println("Save image to (relative to " + dir + ") (type 'exit' to quit w/o saving:");
+		System.out.println("Save image to (relative to " + dir + ") (type 'exit' to quit w/o saving):");
 		String fileName = in.next();
 		
 		// TODO - if the user enters the same file name as the input file, confirm that they want to overwrite the original
