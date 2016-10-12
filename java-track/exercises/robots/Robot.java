@@ -5,8 +5,9 @@ import java.util.HashMap;
 public class Robot {
 	
 	// fields
-	private String name;	
-	private int xPos, yPos, speed, orientation;
+	protected String name;	
+	protected int xPos, yPos, speed, orientation;
+	protected RobotBehavior behavior;
 	
 	private static int base_model = 001;
 	private static final HashMap<Integer, String> dirMap = createMap();
@@ -26,6 +27,7 @@ public class Robot {
 		this.yPos = yPos;
 		this.speed = speed;
 		this.orientation = orientation;
+		
 	}
 	
 	public Robot() {
@@ -37,7 +39,11 @@ public class Robot {
 		
 		Robot.base_model += 1;
 	}
-		
+	
+	public void setBehavior(RobotBehavior rb) {
+		this.behavior = rb;
+	}
+	
 	public int getSpeed() {
 		return speed;
 	}
@@ -131,22 +137,23 @@ public class Robot {
 	
 
 	public static void main(String[] args) {
-		Robot rob = new Robot("rob", 0, 0 , 5, 0);
-		System.out.println(rob);
-		System.out.println();
-		rob.rotate("left");
-		System.out.println();
-		rob.move();
-		System.out.println();
-		rob.rotate("right");
-		System.out.println();
-		rob.move();
-		System.out.println();
-		System.out.println(rob);
-		System.out.println();
-		Robot percy = new Robot();
-		System.out.println();
-		System.out.println(rob.name + " is " + rob.distanceFrom(percy) + " units from " + percy.name);
+		Bender b = new Bender(5);
+		Bender q = new Bender(11);
+		b.setBehavior(new FastBendingBehavior());
+		q.setBehavior(new SlowBendingBehavior());
+		
+		boolean bFinished = false;
+		boolean qFinished = false;
+		
+		while (!bFinished || !qFinished) {
+			bFinished = b.behavior.doNextMove(b);
+			System.out.println();
+			qFinished = q.behavior.doNextMove(q);
+			System.out.println();
+		}
+		System.out.println("ONE OF THE ROBOTS IS DONE!");
+		
+		
 	}	
 	
 }	

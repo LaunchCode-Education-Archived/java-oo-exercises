@@ -66,7 +66,7 @@ public class Student {
 	 * Hint: it may be useful to create an additional constructor!
 	 * 
 	 */
-	public Student createLegacy(Student s) {
+	public Student createLegacy(Student q, Student s) {
 		Student bb = new Student("", "", 0);
 		bb.setFirstName(this.firstName + " " + this.lastName);
 		bb.setLastName(s.firstName + " " + s.lastName);

@@ -9,7 +9,7 @@ public class RobotMenuTest {
 	@Test
 	public void testMenuOptions() {
 		RobotMenu rm = new RobotMenu();
-		int option = rm.menuOptions();
+		int option = 6;
 		assertTrue("Invalid numerical selection", option > 0 && option < 7);
 	}
 

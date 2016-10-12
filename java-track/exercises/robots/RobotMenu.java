@@ -61,13 +61,9 @@ public class RobotMenu {
 
 		while (true) {
 			System.out.println("Enter name of the robot: ");
-			try {
-				name = in.next();
-				if (name != null) {
-					break;
-				}
-			} finally {
-				;
+			name = in.next();
+			if (name != null) {
+				break;
 			}
 		}
 		while (true) {
