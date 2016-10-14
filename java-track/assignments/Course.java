@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 
 public class Course {
 
@@ -5,12 +7,15 @@ public class Course {
 	private int credits;
 	private int remainingSeats;
 	private Student[] roster;
+	
+	private static List<Course> courseList = new ArrayList<Course>();
 
 	public Course(String name, int credits, int numberOfSeats) {
 		this.roster = new Student[numberOfSeats];
 		this.name = name;
 		this.credits = credits;
 		this.remainingSeats = numberOfSeats;
+		courseList.add(this);
 	}
 
 	public String getName() {
