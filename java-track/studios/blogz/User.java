@@ -2,6 +2,8 @@ package blogz;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class User {
 	
@@ -11,18 +13,29 @@ public class User {
 	
 	private static List<User> users = new ArrayList<User>();
 	
-	// Add a static property of type List<User> to hold the list of all users along with a method to return this list. 
-	// This is similar to what you did in Gradebook Revisited. Note that List is an interface, 
-	// so you'll need to choose an appropriate implemented type,
-	// such as ArrayList, when initializing this property.
-	
-	public User(String pw) {
+	public User(String username, String pw) {
+		if (!User.isValidUsername(username)) {
+			throw new IllegalArgumentException();
+		} 
+		this.username = username;
 		this.password = pw;
 		this.hashedPassword = User.hashPassword(pw);
 		users.add(this);
 	}
 	
-	private static List<User> getUsers() {
+	/*
+	 * In the User class, write a static method isValidUsername that returns a boolean signifying whether or not the given string is valid. 
+	 * A username should be considered valid if it is 4-12 characters long, starts with a letter, and contains only letters, numbers, -, and _. 
+	 * This check should happen in the constructor, and an appropriate exception should be thrown if the username is not valid. 
+	 * For this task, use the Pattern class, following the pattern used near the top of the linked reference page. 
+	 * The regular expression to use is: [a-zA-Z][a-zA-Z0-9_-]{4,11}.
+	 */
+	public static boolean isValidUsername(String username) {
+		return Pattern.matches("[a-zA-Z][a-zA-Z0-9_-]{4,11}", username);
+	}
+
+	
+	public static List<User> getUsers() {
 		return users;
 	}
 	
@@ -32,7 +45,7 @@ public class User {
 	}
 	
 	// verify a password against its hash
-	private boolean isValidPassword (String pw) {
+	public boolean isValidPassword (String pw) {
 		return User.hashPassword(pw).equals(this.hashedPassword);
 	}
 
