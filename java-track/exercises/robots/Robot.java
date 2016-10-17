@@ -7,7 +7,6 @@ public class Robot {
 	// fields
 	protected String name;	
 	protected int xPos, yPos, speed, orientation;
-	protected RobotBehavior behavior;
 	
 	private static int base_model = 001;
 	private static final HashMap<Integer, String> dirMap = createMap();
@@ -40,10 +39,7 @@ public class Robot {
 		Robot.base_model += 1;
 	}
 	
-	public void setBehavior(RobotBehavior rb) {
-		this.behavior = rb;
-	}
-	
+
 	public int getSpeed() {
 		return speed;
 	}
@@ -135,25 +131,10 @@ public class Robot {
 		System.out.println(this.name + " turned " + direction + ". Current heading: " + dirMap.get(orientation));
 	}
 	
+	
 
 	public static void main(String[] args) {
-		Bender b = new Bender(5);
-		Bender q = new Bender(11);
-		b.setBehavior(new FastBendingBehavior());
-		q.setBehavior(new SlowBendingBehavior());
-		
-		boolean bFinished = false;
-		boolean qFinished = false;
-		
-		while (!bFinished || !qFinished) {
-			bFinished = b.behavior.doNextMove(b);
-			System.out.println();
-			qFinished = q.behavior.doNextMove(q);
-			System.out.println();
-		}
-		System.out.println("ONE OF THE ROBOTS IS DONE!");
-		
-		
+
 	}	
 	
 }	

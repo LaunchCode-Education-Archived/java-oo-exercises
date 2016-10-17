@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 import org.junit.Test;
 
 import junit.framework.TestCase;
@@ -15,6 +17,7 @@ public class StudentAndCourseTest extends TestCase {
 	String s6 = "The plus method shouldn't change the original vector";
 	String s8 = "hasHigherAverage() isn't working properly";
 	String s9 = "getClassStanding() isn't working properly";
+	
 	@Test
 	public void testStudentInit() {
 		Student s = new Student("Doug", "Shook", 111111);
@@ -109,7 +112,7 @@ public class StudentAndCourseTest extends TestCase {
 			int c2 = (int)(Math.random() * 120 + 1);
 			double g2 = Math.round(Math.random() * 4000) / 1000.0;
 			ss.submitGrade(g2, c2);
-			Student bb = s.createLegacy(s, ss);
+			Student bb = Student.createLegacy(s, ss);
 			assertTrue("create baby not setting name properly", bb.getName().contains(s.getName()) && bb.getName().contains(ss.getName()));
 			assertEquals("create baby not setting gpa properly", (g + g2) / 2, bb.getGPA(), 0.01);
 			assertEquals("create baby not setting credits properly", bb.getCredits(), Math.max(c, c2));
@@ -159,6 +162,12 @@ public class StudentAndCourseTest extends TestCase {
 			assertEquals("course getName() not working, or name not being set properly", "" + a, c2.getName());
 			assertEquals("course getRemainingSeats() not working, or seats not being set properly", s, c2.getRemainingSeats());
 		}
+	}
+	
+	@Test
+	public void testCourseList() {
+		ArrayList<Course> courses = Course.getAllCourses();
+		assertEquals(Course.getNumCoursesCreated(), courses.size());
 	}
 
 	@Test
