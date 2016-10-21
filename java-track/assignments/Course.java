@@ -1,78 +1,97 @@
 
 public class Course {
-	
+
 	private String name;
-	private int credits;
+	private int Credits;
 	private int remainingSeats;
 	private Student[] roster;
-	
-	public Course(String name, int credits, int numberOfSeats) {
-		this.roster = new Student[numberOfSeats];
+
+	public Course( String name, int Credits, int numberofSeats) {
+
 		this.name = name;
-		this.credits = credits;
-		this.remainingSeats = numberOfSeats;
+		this.Credits = Credits;
+		this.remainingSeats = numberofSeats;
+		this.roster = new Student[numberofSeats];	
 	}
-	
+
+
 	public String getName() {
 		return name;
 	}
+
+
 	public int getCredits() {
-		return credits;
+		return Credits;
 	}
+
+
 	public int getRemainingSeats() {
 		return remainingSeats;
 	}
+
+
 	public Student[] getRoster() {
 		return roster;
 	}
-	
-	public Boolean addStudent(Student newStudent) {
-		
+
+
+	public boolean addStudent(Student student) {
+
 		if (this.remainingSeats == 0) {
 			return false;
 		}
-		
-		// check to make sure student hasn't already enrolled
-		for (int i = 0; i < roster.length; i++) {
-			if (roster[i] != null && roster[i].getName() == newStudent.getName()) {
+
+		for(int i = 0; i < this.roster.length; i++) {
+			if(this.roster[i] != null && this.roster[i].getName() == student.getName() ) {
 				return false;
 			}
 		}
-		
-		roster[roster.length - this.remainingSeats] = newStudent;
-		remainingSeats--;
-		
-		return true;		
+
+		this.roster[this.roster.length - this.remainingSeats ] = student;
+		this.remainingSeats -= 1;
+		return true;
 	}
-	
-	public double averageGPA() {
-		
-		double sum = 0.0;
-		int numberOfStudents = 0;
-		for (int i = 0; i < roster.length; i++) {
-			if (roster[i] != null) {
-				sum += roster[i].getGPA();
-				numberOfStudents++;
-			}
-		}
-		
-		return sum / numberOfStudents;
-	}
-	
+
 	public String generateRoster() {
-		
-		String rosterString = "";
-		for (int i = 0; i < roster.length; i++) {
-			if (roster[i] != null) {
-				rosterString = rosterString + roster[i].getName() + "\n";
+
+		String rosterNames = "";
+		for(int i = 0; i < this.roster.length; i++) {
+			if(this.roster != null) {
+				String names = roster[i].getName();
+				rosterNames += names + "\n";
 			}
 		}
-		
-		return rosterString;		
+
+		return rosterNames; 
+	}
+	
+	public double averageGPA(){
+		double sumGPA = 0.0;
+		int numberGPA = 0;
+		for( int i = 0; i < this.roster.length; i++) 
+		{
+			if(this.roster[i] != null) {
+			sumGPA += this.roster[i].getGPA();
+			 numberGPA ++;
+			}
+		}
+		 double averageGPA = sumGPA/numberGPA;
+		 return averageGPA;
 	}
 	
 	public String toString() {
-		return this.name + "(" + this.credits + ")";
+		
+		return this.name + " (" + this.Credits + ")";
 	}
-	
+
+
+
+
+
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
 }
