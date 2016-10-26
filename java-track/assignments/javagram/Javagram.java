@@ -28,8 +28,7 @@ public class Javagram {
 				System.out.println("Image path (relative to " + dir + "):");
 				relPath = in.next();
 				
-				String[] relPathParts = relPath.split(File.separator);
-				imagePath = dir + File.separator + String.join(File.separator, Arrays.asList(relPathParts));
+				imagePath = dir + File.separator + relPath;
 				
 				picture = new Picture(imagePath);
 				
