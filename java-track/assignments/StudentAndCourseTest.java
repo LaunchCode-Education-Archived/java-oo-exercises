@@ -171,7 +171,7 @@ public class StudentAndCourseTest extends TestCase {
 			for (int j = 0; j < s; j++) {
 				String aa =  "" + (Math.random() * 5000);
 				String b =  "" + (Math.random() * 5000);
-				int cc = (int)Math.random() * 500000;
+				int cc = (int)(Math.random() * 500000);
 				Student s2 = new Student(aa, b, cc);
 				boolean added = c.addStudent(s2);
 				assertTrue("addStudent not working properly", added);
