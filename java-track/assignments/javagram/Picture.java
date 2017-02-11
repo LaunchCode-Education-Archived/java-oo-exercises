@@ -295,4 +295,8 @@ public final class Picture implements ActionListener {
         pic.show();
     }
 
+public String getFilename() {
+	return filename;
+}
+
 }

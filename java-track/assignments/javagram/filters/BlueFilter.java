@@ -3,7 +3,7 @@ package javagram.filters;
 import javagram.Picture;
 import java.awt.Color;
 
-public class BlueFilter {
+public class BlueFilter implements Filter {
 
 	public Picture process(Picture original) {
 		
